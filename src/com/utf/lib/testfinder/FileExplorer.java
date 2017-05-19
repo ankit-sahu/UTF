@@ -70,17 +70,27 @@ public class FileExplorer {
 		return qualifiedNames;
 	}
 	
-	public static void main(String[] args) throws ClassNotFoundException{
-		FileExplorer fe = new FileExplorer();
-//		TestFinder tf = new TestFinder();
-
-		List<String> paths = fe.getAllFilesAndFolders();
-		List<String> classFiles = fe.getClassFiles(paths);
-		List<String> relFilepath =fe.getRelativePath(classFiles);
-		List<String> qualNames = fe.getQualifiedName(relFilepath);
-		for(String qualName : qualNames){
-			System.out.println(qualName);
+	public List<String> getQualifiedClassNameWithoutExtention(List<String> qualifiedNames){
+		List<String> qualifiedNamesWithoutExtentions = new ArrayList<String>();
+		for(String name : qualifiedNames){
+			qualifiedNamesWithoutExtentions.add(name.substring(0, name.length()-6));
 		}
+		return qualifiedNamesWithoutExtentions;
 	}
+
+	
+//	public static void main(String[] args) throws ClassNotFoundException{
+//		FileExplorer fe = new FileExplorer();
+////		TestFinder tf = new TestFinder();
+//
+//		List<String> paths = fe.getAllFilesAndFolders();
+//		List<String> classFiles = fe.getClassFiles(paths);
+//		List<String> relFilepath =fe.getRelativePath(classFiles);
+//		List<String> qualNames = fe.getQualifiedName(relFilepath);
+//		List<String> withoutExtention = fe.getQualifiedClassNameWithoutExtention(qualNames);
+//		for(String name : withoutExtention){
+//			System.out.println(name);
+//		}
+//	}
 	
 }
